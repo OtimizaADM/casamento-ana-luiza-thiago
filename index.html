@@ -3,855 +3,442 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ana Luiza &amp; Thiago — 22.05.2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Ana Luiza & Thiago — 22.05.2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --cream: #F8F1E5;
-  --cream-dark: #EFE6D3;
-  --beige: #E8D9C0;
-  --beige-mid: #D9C9A8;
-  --terracotta: #BC5E38;
-  --terracotta-hover: #A24D2A;
-  --terracotta-pale: #F2E0D4;
-  --brown: #3E2410;
-  --warm-brown: #6E4830;
-  --sage: #728B62;
-  --sage-light: #A0B590;
-  --gold: #C4A055;
-  --text: #332010;
-  --text-light: #7A5F48;
+:root{
+  --cream:#FDFAF5;--cream2:#F7F0E3;--cream3:#EFE5D0;
+  --gold:#9A7B35;--gold2:#7A5C1E;--gold3:#C4A060;
+  --text:#6A5025;--text2:#9A8060;
+  --pink1:#FAC8D5;--pink2:#F0A8BC;--pink3:#DC8098;
+  --pink4:#B85070;--pink5:#8A2845;
+  --leaf1:#8A9A5A;--leaf2:#607040;--branch:#A09060;
 }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--cream);font-family:'Cormorant Garamond',serif;color:var(--text);overflow:hidden}
+body.open{overflow-y:auto;overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.022;pointer-events:none;z-index:9999}
 
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+/* ===== SCENE ===== */
+#scene{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(ellipse 65% 55% at 0% 100%,rgba(240,168,188,.1) 0%,transparent 55%),radial-gradient(ellipse 55% 50% at 100% 0%,rgba(240,168,188,.1) 0%,transparent 55%),var(--cream);z-index:200;transition:opacity 1.1s ease .4s,visibility 1.1s ease .4s}
+#scene.gone{opacity:0;visibility:hidden;pointer-events:none}
+.scene-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--text2);letter-spacing:.1em;margin-bottom:2.5rem;opacity:0;animation:up .9s ease .8s forwards}
+.scene-hint{font-family:'Raleway',sans-serif;font-size:.58rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-top:2.2rem;opacity:0;animation:up .7s ease 1.5s forwards,blink 2.5s ease 2.3s infinite;display:flex;align-items:center;gap:.7rem}
+.scene-hint::before,.scene-hint::after{content:'';display:block;width:26px;height:1px;background:var(--gold);opacity:.4}
 
-body {
-  background: var(--beige);
-  font-family: 'Cormorant Garamond', serif;
-  color: var(--text);
-  overflow: hidden;
-}
-body.unlocked { overflow-y: auto; overflow-x: hidden; }
+/* ===== ENVELOPE ===== */
+.env-outer{opacity:0;animation:up .9s ease .2s forwards;cursor:pointer}
+.env-outer:hover .envelope{transform:translateY(-5px)}
+.envelope{position:relative;width:420px;height:280px;transition:transform .4s ease;filter:drop-shadow(0 16px 45px rgba(100,60,20,.16)) drop-shadow(0 3px 10px rgba(100,60,20,.10))}
+.env-body{position:absolute;inset:0;background:var(--cream2);border-radius:3px;overflow:hidden}
+.env-body::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 49.5%,rgba(180,160,110,.5) 49.5%,rgba(180,160,110,.5) 50.2%,transparent 50.2%),linear-gradient(-135deg,transparent 49.5%,rgba(180,160,110,.5) 49.5%,rgba(180,160,110,.5) 50.2%,transparent 50.2%)}
+.env-sl{position:absolute;top:0;left:0;width:0;height:0;border-top:140px solid transparent;border-bottom:140px solid transparent;border-left:210px solid var(--cream3);z-index:1}
+.env-sr{position:absolute;top:0;right:0;width:0;height:0;border-top:140px solid transparent;border-bottom:140px solid transparent;border-right:210px solid var(--cream3);z-index:1}
+.env-sb{position:absolute;bottom:0;left:0;right:0;width:0;height:0;border-left:210px solid transparent;border-right:210px solid transparent;border-bottom:140px solid var(--cream3);z-index:2}
+.env-letter{position:absolute;top:10px;left:16px;right:16px;bottom:0;background:linear-gradient(180deg,#FDFAF6 0%,#F8F0E2 100%);z-index:2;border-radius:2px;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:transform 1.3s cubic-bezier(.22,1,.36,1) .45s}
+.env-letter-text{font-family:'Great Vibes',cursive;font-size:1.55rem;color:var(--gold);text-align:center;line-height:1.45;opacity:.65}
+.env-flap{position:absolute;top:0;left:0;width:100%;height:55%;transform-origin:top center;transform-style:preserve-3d;z-index:5;transition:transform 1s cubic-bezier(.4,0,.2,1);pointer-events:none}
+.env-ff{position:absolute;inset:0;background:var(--cream2);clip-path:polygon(0% 0%,100% 0%,50% 100%);backface-visibility:hidden}
+.env-ff::after{content:'';position:absolute;inset:0;background:linear-gradient(165deg,rgba(205,185,140,.5) 0%,transparent 55%);clip-path:polygon(0% 0%,100% 0%,50% 100%)}
+.env-fb{position:absolute;inset:0;background:var(--cream3);clip-path:polygon(0% 0%,100% 0%,50% 100%);transform:rotateX(180deg);backface-visibility:hidden}
+.wax{position:absolute;width:68px;height:68px;top:calc(55% - 34px);left:calc(50% - 34px);z-index:6;pointer-events:none;transition:opacity .3s ease .05s,transform .3s ease .05s;filter:drop-shadow(0 3px 6px rgba(100,60,20,.2))}
+.envelope.opening .env-flap{transform:perspective(1600px) rotateX(-188deg)}
+.envelope.opening .wax{opacity:0;transform:scale(.25)}
+.envelope.opening .env-letter{transform:translateY(-120%)}
 
-/* ============================================================
-   GRAIN TEXTURE OVERLAY
-   ============================================================ */
-body::after {
-  content: '';
-  position: fixed; inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-  opacity: 0.035;
-  pointer-events: none;
-  z-index: 9999;
-}
+/* ===== INVITATION ===== */
+#invitation{opacity:0;visibility:hidden;transition:opacity .95s ease;min-height:100vh}
+#invitation.visible{opacity:1;visibility:visible}
 
-/* ============================================================
-   SCENE — ENVELOPE
-   ============================================================ */
-#scene {
-  position: fixed; inset: 0;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 0;
-  background: radial-gradient(ellipse 70% 60% at 15% 90%, rgba(188,94,56,0.09) 0%, transparent 60%),
-              radial-gradient(ellipse 60% 55% at 85% 10%, rgba(114,139,98,0.09) 0%, transparent 60%),
-              var(--beige);
-  z-index: 200;
-  transition: opacity 1.1s ease 0.4s, visibility 1.1s ease 0.4s;
-}
-#scene.gone { opacity: 0; visibility: hidden; pointer-events: none; }
+/* ===== HERO ===== */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:5rem 2rem 4rem;background:var(--cream);overflow:hidden}
+.fl-corner{position:absolute;pointer-events:none}
+.fl-tl{top:0;left:0}
+.fl-br{bottom:0;right:0;transform:rotate(180deg)}
 
-.scene-eyebrow {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 1.05rem;
-  color: var(--warm-brown);
-  letter-spacing: 0.08em;
-  margin-bottom: 2.8rem;
-  opacity: 0;
-  animation: riseIn 1s ease 0.9s forwards;
-}
+.verse{max-width:410px;margin-bottom:2rem;position:relative;z-index:2;opacity:0;animation:up .8s ease .1s forwards}
+.verse-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--text2);line-height:1.8;font-weight:300}
+.verse-ref{font-family:'Raleway',sans-serif;font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-top:.4rem}
 
-.scene-hint {
-  font-family: 'Raleway', sans-serif;
-  font-size: 0.6rem;
-  font-weight: 500;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--terracotta);
-  margin-top: 2.4rem;
-  opacity: 0;
-  animation: riseIn 0.8s ease 1.6s forwards;
-  display: flex; align-items: center; gap: 0.8rem;
-}
-.scene-hint::before, .scene-hint::after {
-  content: ''; display: block; width: 28px; height: 1px;
-  background: var(--terracotta); opacity: 0.45;
-}
+.names{position:relative;z-index:2;opacity:0;animation:up 1s ease .25s forwards}
+.name-line{font-family:'Great Vibes',cursive;color:var(--gold2);line-height:1.05}
+.name-line.big{font-size:clamp(3.5rem,9vw,5.8rem)}
+.name-line.and{font-size:clamp(2.8rem,7.5vw,4.8rem)}
 
-/* pulse animation on hint */
-.scene-hint { animation: riseIn 0.8s ease 1.6s forwards, blink 2.4s ease 2.5s infinite; }
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.45} }
+.subtitle{font-family:'Raleway',sans-serif;font-size:.62rem;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-top:1.4rem;position:relative;z-index:2;opacity:0;animation:up .7s ease .45s forwards}
 
-/* ============================================================
-   ENVELOPE STRUCTURE
-   ============================================================ */
-.env-outer {
-  opacity: 0;
-  animation: riseIn 1s ease 0.3s forwards;
-  cursor: pointer;
-  position: relative;
-}
-.env-outer:hover .envelope { transform: translateY(-4px); }
-.envelope {
-  position: relative;
-  width: 420px; height: 280px;
-  transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
-  filter: drop-shadow(0 18px 48px rgba(62,36,16,0.18)) drop-shadow(0 4px 12px rgba(62,36,16,0.10));
-}
+.date-block{margin-top:2rem;position:relative;z-index:2;opacity:0;animation:up .8s ease .6s forwards}
+.date-rule{display:flex;align-items:center;justify-content:center;gap:1rem;margin:.6rem 0}
+.date-rule span{display:block;height:1px;width:65px;background:var(--gold);opacity:.45}
+.date-main{font-family:'Raleway',sans-serif;font-size:1rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--gold2)}
 
-/* Body */
-.env-body {
-  position: absolute; inset: 0;
-  background: var(--cream);
-  border-radius: 3px;
-  overflow: hidden;
-}
-.env-body::before {
-  content: '';
-  position: absolute; inset: 0;
-  background:
-    linear-gradient(135deg, transparent 49.5%, rgba(186,162,120,0.55) 49.5%, rgba(186,162,120,0.55) 50.2%, transparent 50.2%),
-    linear-gradient(-135deg, transparent 49.5%, rgba(186,162,120,0.55) 49.5%, rgba(186,162,120,0.55) 50.2%, transparent 50.2%);
-}
+.description{margin-top:2rem;max-width:450px;font-size:1.02rem;font-weight:300;line-height:1.9;color:var(--text2);position:relative;z-index:2;opacity:0;animation:up .7s ease .8s forwards}
 
-/* Back side flaps (show through body seams) */
-.env-side-l {
-  position: absolute; top: 0; left: 0;
-  width: 0; height: 0;
-  border-top: 140px solid transparent;
-  border-bottom: 140px solid transparent;
-  border-left: 210px solid var(--cream-dark);
-  z-index: 1;
-}
-.env-side-r {
-  position: absolute; top: 0; right: 0;
-  width: 0; height: 0;
-  border-top: 140px solid transparent;
-  border-bottom: 140px solid transparent;
-  border-right: 210px solid var(--cream-dark);
-  z-index: 1;
-}
-.env-bottom-flap {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  width: 0; height: 0;
-  border-left: 210px solid transparent;
-  border-right: 210px solid transparent;
-  border-bottom: 140px solid var(--beige-mid);
-  z-index: 2;
-}
+/* ===== COUNTDOWN ===== */
+.cd-section{padding:3.5rem 2rem;background:linear-gradient(135deg,#F9D0DD 0%,#F5C5D2 60%,#F0B8C8 100%);text-align:center;position:relative;overflow:hidden}
+.cd-section::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.12) 0%,transparent 50%)}
+.sec-lbl{font-family:'Raleway',sans-serif;font-size:.55rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:rgba(122,92,30,.65);margin-bottom:1.8rem}
+.countdown{display:flex;justify-content:center;align-items:flex-start;flex-wrap:wrap}
+.cd-blk{display:flex;flex-direction:column;align-items:center;gap:.4rem;padding:0 1.3rem}
+.cd-blk+.cd-blk{border-left:1px solid rgba(154,123,53,.2)}
+.cd-num{font-family:'Cormorant Garamond',serif;font-size:3.2rem;font-weight:400;color:var(--gold2);line-height:1;min-width:2.2ch;text-align:center;transition:transform .15s}
+.cd-num.tick{transform:translateY(-2px)}
+.cd-unit{font-family:'Raleway',sans-serif;font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(122,92,30,.5)}
 
-/* Letter peeking inside */
-.env-letter {
-  position: absolute;
-  top: 10px; left: 16px; right: 16px; bottom: 0;
-  background: linear-gradient(180deg, #FDFAF4 0%, #F5ECD8 100%);
-  z-index: 2;
-  border-radius: 2px;
-  display: flex; align-items: center; justify-content: center;
-  overflow: hidden;
-  transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1) 0.45s;
-}
-.env-letter-text {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 1rem;
-  color: var(--warm-brown);
-  letter-spacing: 0.04em;
-  text-align: center;
-  line-height: 1.5;
-  opacity: 0.75;
-}
+/* ===== LOCATION ===== */
+.loc-section{padding:4.5rem 2rem;background:var(--cream);text-align:center}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-style:italic;color:var(--gold2);margin-bottom:2rem;font-weight:400}
+.addr-card{max-width:420px;margin:0 auto;background:#FDFAF5;border:1px solid rgba(180,145,80,.18);border-radius:4px;padding:2.5rem 2rem 2.2rem;position:relative;overflow:hidden}
+.addr-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold3),transparent)}
+.addr-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold2);margin-bottom:.4rem;font-weight:400}
+.addr-street{font-size:.95rem;font-weight:300;color:var(--text2);line-height:1.7;margin-bottom:1.6rem}
+.btn-map{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold2);color:var(--cream);text-decoration:none;font-family:'Raleway',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;padding:.85rem 2rem;border-radius:2px;transition:background .2s,transform .2s}
+.btn-map:hover{background:var(--pink4);transform:translateY(-1px)}
 
-/* TOP FLAP (the animated one) */
-.env-flap {
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 55%;
-  transform-origin: top center;
-  transform-style: preserve-3d;
-  z-index: 5;
-  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1) 0s;
-  pointer-events: none;
-}
-.env-flap-front {
-  position: absolute; inset: 0;
-  background: var(--cream);
-  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
-  backface-visibility: hidden;
-}
-.env-flap-front::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(165deg, rgba(215,198,168,0.55) 0%, transparent 55%);
-  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
-}
-.env-flap-back {
-  position: absolute; inset: 0;
-  background: var(--cream-dark);
-  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
-  transform: rotateX(180deg);
-  backface-visibility: hidden;
-}
+/* ===== ACTIONS ===== */
+.act-section{padding:4rem 2rem;background:var(--cream2);text-align:center}
+.act-copy{font-style:italic;font-size:1.05rem;color:var(--text2);margin-top:-1.4rem;margin-bottom:.5rem;line-height:1.8}
+.btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2.2rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:'Raleway',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;padding:.95rem 1.9rem;border-radius:2px;cursor:pointer;transition:all .22s;border:none}
+.btn-solid{background:var(--gold2);color:var(--cream)}
+.btn-solid:hover{background:var(--pink4);transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--gold2);border:1.5px solid var(--gold2)}
+.btn-outline:hover{background:var(--gold2);color:var(--cream);transform:translateY(-1px)}
 
-/* Wax seal */
-.wax-seal {
-  position: absolute;
-  width: 70px; height: 70px;
-  top: calc(55% - 35px);
-  left: calc(50% - 35px);
-  z-index: 6;
-  pointer-events: none;
-  transition: opacity 0.3s ease 0.05s, transform 0.3s ease 0.05s;
-  filter: drop-shadow(0 3px 8px rgba(62,36,16,0.2));
-}
+/* ===== FOOTER ===== */
+footer{padding:3rem 2rem 4rem;background:var(--cream);border-top:1px solid rgba(180,145,80,.15);text-align:center}
+.ft-names{font-family:'Great Vibes',cursive;font-size:2.2rem;color:var(--gold2);margin-bottom:.45rem}
+.ft-date{font-family:'Raleway',sans-serif;font-size:.55rem;letter-spacing:.28em;text-transform:uppercase;color:var(--text2);opacity:.5}
 
-/* OPEN STATE */
-.envelope.opening .env-flap {
-  transform: perspective(1600px) rotateX(-188deg);
-}
-.envelope.opening .wax-seal {
-  opacity: 0;
-  transform: scale(0.25);
-}
-.envelope.opening .env-letter {
-  transform: translateY(-120%);
-}
+/* ===== ANIMATIONS ===== */
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.45}}
 
-/* ============================================================
-   INVITATION
-   ============================================================ */
-#invitation {
-  opacity: 0; visibility: hidden;
-  transition: opacity 0.95s ease;
-  min-height: 100vh;
-}
-#invitation.visible { opacity: 1; visibility: visible; }
-
-/* ============================================================
-   HERO
-   ============================================================ */
-.hero {
-  min-height: 100vh;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  text-align: center;
-  padding: 5rem 2rem;
-  position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(ellipse 70% 50% at 15% 100%, rgba(188,94,56,0.055) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 50% at 88% 5%, rgba(114,139,98,0.065) 0%, transparent 55%),
-    var(--cream);
-}
-
-/* botanical corners */
-.bot {
-  position: absolute;
-  pointer-events: none;
-  opacity: 0.12;
-}
-.bot-tl { top: -10px; left: -10px; }
-.bot-tr { top: -10px; right: -10px; transform: scaleX(-1); }
-.bot-bl { bottom: -10px; left: -10px; transform: scaleY(-1); }
-.bot-br { bottom: -10px; right: -10px; transform: scale(-1); }
-
-.hero-eyebrow {
-  font-family: 'Raleway', sans-serif;
-  font-size: 0.6rem; font-weight: 600;
-  letter-spacing: 0.38em; text-transform: uppercase;
-  color: var(--terracotta);
-  margin-bottom: 1.6rem;
-  opacity: 0; animation: riseIn 0.8s ease 0.15s forwards;
-}
-.hero-names {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2.8rem, 8vw, 5rem);
-  font-weight: 400; line-height: 1.08;
-  color: var(--brown);
-  letter-spacing: -0.01em;
-  opacity: 0; animation: riseIn 1s ease 0.3s forwards;
-}
-.hero-names .amp {
-  font-style: italic; color: var(--terracotta);
-  display: block; font-size: 0.65em;
-  margin: 0.15em 0;
-}
-.hero-date {
-  margin-top: 1.6rem;
-  font-family: 'Raleway', sans-serif;
-  font-size: 0.7rem; font-weight: 400;
-  letter-spacing: 0.32em; text-transform: uppercase;
-  color: var(--warm-brown);
-  opacity: 0; animation: riseIn 0.8s ease 0.5s forwards;
-}
-.hero-divider {
-  margin: 2.4rem auto;
-  width: 220px;
-  opacity: 0; animation: fadeIn 0.8s ease 0.7s forwards;
-}
-.hero-copy {
-  font-size: 1.15rem; font-style: italic;
-  font-weight: 300; line-height: 1.9;
-  color: var(--text-light);
-  max-width: 360px;
-  opacity: 0; animation: riseIn 0.8s ease 0.9s forwards;
-}
-
-/* ============================================================
-   COUNTDOWN
-   ============================================================ */
-.countdown-section {
-  padding: 4rem 2rem;
-  background: var(--terracotta);
-  position: relative; overflow: hidden;
-  text-align: center;
-}
-.countdown-section::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 45%);
-}
-.section-eyebrow {
-  font-family: 'Raleway', sans-serif;
-  font-size: 0.57rem; font-weight: 500;
-  letter-spacing: 0.32em; text-transform: uppercase;
-  color: rgba(248,241,229,0.65);
-  margin-bottom: 2rem;
-}
-.countdown {
-  display: flex; gap: 0; justify-content: center;
-  align-items: flex-start; flex-wrap: wrap;
-}
-.cd-block {
-  display: flex; flex-direction: column;
-  align-items: center; gap: 0.45rem;
-  padding: 0 1.4rem;
-}
-.cd-block + .cd-block {
-  border-left: 1px solid rgba(248,241,229,0.15);
-}
-.cd-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 3.4rem; font-weight: 400;
-  color: var(--cream);
-  line-height: 1;
-  min-width: 2.2ch; text-align: center;
-  transition: transform 0.2s;
-}
-.cd-num.tick { transform: translateY(-3px); }
-.cd-label {
-  font-family: 'Raleway', sans-serif;
-  font-size: 0.52rem; font-weight: 400;
-  letter-spacing: 0.22em; text-transform: uppercase;
-  color: rgba(248,241,229,0.55);
-}
-
-/* ============================================================
-   SCHEDULE
-   ============================================================ */
-.schedule-section {
-  padding: 5rem 2rem;
-  background: var(--cream);
-  text-align: center;
-}
-.section-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.9rem; font-style: italic; font-weight: 400;
-  color: var(--brown);
-  margin-bottom: 3rem;
-}
-.timeline {
-  max-width: 480px;
-  margin: 0 auto;
-  position: relative;
-  padding-left: 2rem;
-  text-align: left;
-}
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 10px; bottom: 10px;
-  width: 1px;
-  background: linear-gradient(180deg, transparent 0%, var(--beige-mid) 10%, var(--beige-mid) 90%, transparent 100%);
-}
-.tl-item {
-  position: relative;
-  padding: 0 0 2.4rem 1.5rem;
-}
-.tl-item:last-child { padding-bottom: 0; }
-.tl-dot {
-  position: absolute;
-  left: -0.35rem; top: 0.25rem;
-  width: 8px; height: 8px;
-  background: var(--terracotta);
-  border-radius: 50%;
-  box-shadow: 0 0 0 3px var(--cream), 0 0 0 4px rgba(188,94,56,0.2);
-}
-.tl-time {
-  font-family: 'Raleway', sans-serif;
-  font-size: 0.65rem; font-weight: 600;
-  letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--terracotta);
-  margin-bottom: 0.35rem;
-}
-.tl-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.25rem; font-weight: 400;
-  color: var(--brown);
-  margin-bottom: 0.2rem;
-}
-.tl-desc {
-  font-size: 0.95rem; font-weight: 300;
-  color: var(--text-light); line-height: 1.55;
-}
-
-/* ============================================================
-   LOCATION
-   ============================================================ */
-.location-section {
-  padding: 5rem 2rem;
-  background: var(--beige);
-  text-align: center;
-}
-.addr-card {
-  max-width: 440px;
-  margin: 0 auto;
-  background: var(--cream);
-  border-radius: 6px;
-  padding: 2.8rem 2.2rem 2.4rem;
-  box-shadow: 0 6px 40px rgba(62,36,16,0.07), 0 1px 4px rgba(62,36,16,0.05);
-  position: relative; overflow: hidden;
-}
-.addr-card::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--sage), var(--terracotta), var(--sage));
-  opacity: 0.6;
-}
-.addr-icon { margin-bottom: 1rem; opacity: 0.45; }
-.addr-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.45rem; font-weight: 400;
-  color: var(--brown); margin-bottom: 0.55rem;
-}
-.addr-street {
-  font-size: 0.95rem; font-weight: 300;
-  color: var(--text-light); line-height: 1.7;
-  margin-bottom: 1.8rem;
-}
-.btn-map {
-  display: inline-flex; align-items: center; gap: 0.55rem;
-  background: var(--terracotta);
-  color: var(--cream);
-  text-decoration: none;
-  font-family: 'Raleway', sans-serif;
-  font-size: 0.62rem; font-weight: 600;
-  letter-spacing: 0.22em; text-transform: uppercase;
-  padding: 0.9rem 2.2rem;
-  border-radius: 2px;
-  transition: background 0.25s, transform 0.2s;
-}
-.btn-map:hover { background: var(--terracotta-hover); transform: translateY(-1px); }
-
-/* ============================================================
-   ACTIONS
-   ============================================================ */
-.actions-section {
-  padding: 5rem 2rem;
-  background: var(--cream);
-  text-align: center;
-}
-.actions-copy {
-  font-size: 1.1rem; font-style: italic; font-weight: 300;
-  color: var(--text-light); margin-top: -1.6rem;
-  margin-bottom: 0.5rem; line-height: 1.8;
-}
-.actions-grid {
-  display: flex; gap: 1rem;
-  justify-content: center; flex-wrap: wrap;
-  margin-top: 2.4rem;
-}
-.btn-action {
-  display: inline-flex; align-items: center; gap: 0.6rem;
-  font-family: 'Raleway', sans-serif;
-  font-size: 0.62rem; font-weight: 600;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  text-decoration: none; padding: 1rem 2rem;
-  border-radius: 2px;
-  cursor: pointer; transition: all 0.25s;
-  border: none;
-}
-.btn-solid {
-  background: var(--brown); color: var(--cream);
-}
-.btn-solid:hover { background: var(--terracotta); transform: translateY(-1px); }
-.btn-outline {
-  background: transparent; color: var(--brown);
-  border: 1.5px solid var(--brown);
-}
-.btn-outline:hover { background: var(--brown); color: var(--cream); transform: translateY(-1px); }
-
-/* ============================================================
-   FOOTER
-   ============================================================ */
-footer {
-  padding: 3.5rem 2rem 4rem;
-  background: var(--cream);
-  border-top: 1px solid var(--beige-mid);
-  text-align: center;
-}
-.footer-names {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.7rem; font-style: italic;
-  color: var(--brown); margin-bottom: 0.5rem;
-}
-.footer-date {
-  font-family: 'Raleway', sans-serif;
-  font-size: 0.57rem; font-weight: 400;
-  letter-spacing: 0.28em; text-transform: uppercase;
-  color: var(--text-light); opacity: 0.6;
-}
-
-/* ============================================================
-   ANIMATIONS
-   ============================================================ */
-@keyframes riseIn {
-  from { opacity: 0; transform: translateY(18px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeIn {
-  from { opacity: 0; } to { opacity: 1; }
-}
-
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-@media (max-width: 500px) {
-  .envelope { width: 320px; height: 215px; }
-  .env-side-l { border-top-width: 107px; border-bottom-width: 107px; border-left-width: 160px; }
-  .env-side-r { border-top-width: 107px; border-bottom-width: 107px; border-right-width: 160px; }
-  .env-bottom-flap { border-left-width: 160px; border-right-width: 160px; border-bottom-width: 107px; }
-  .hero-names { font-size: 2.4rem; }
-  .cd-num { font-size: 2.4rem; }
-  .cd-block { padding: 0 0.9rem; }
+/* ===== RESPONSIVE ===== */
+@media(max-width:480px){
+  .envelope{width:320px;height:215px}
+  .env-sl{border-top-width:107px;border-bottom-width:107px;border-left-width:160px}
+  .env-sr{border-top-width:107px;border-bottom-width:107px;border-right-width:160px}
+  .env-sb{border-left-width:160px;border-right-width:160px;border-bottom-width:107px}
+  .name-line.big{font-size:3rem}.name-line.and{font-size:2.5rem}
+  .cd-num{font-size:2.2rem}.cd-blk{padding:0 .8rem}
+  .fl-corner{width:260px}
 }
 </style>
 </head>
 <body>
 
-<!-- ============================================================
-     CENA DO ENVELOPE
-     ============================================================ -->
+<!-- ===================== CENA ENVELOPE ===================== -->
 <div id="scene">
-
-  <p class="scene-eyebrow">Um momento especial aguarda por você</p>
+  <p class="scene-text">Um momento especial aguarda por você</p>
 
   <div class="env-outer" id="envOuter" onclick="openEnvelope()" role="button" aria-label="Abrir convite">
     <div class="envelope" id="envelope">
-
       <div class="env-body"></div>
-      <div class="env-side-l"></div>
-      <div class="env-side-r"></div>
-      <div class="env-bottom-flap"></div>
+      <div class="env-sl"></div><div class="env-sr"></div><div class="env-sb"></div>
 
       <div class="env-letter">
-        <div class="env-letter-text">
-          Ana Luiza<br>&amp; Thiago Feitosa
-        </div>
+        <div class="env-letter-text">Ana Luiza<br>&amp; Thiago</div>
       </div>
 
-      <div class="env-flap">
-        <div class="env-flap-front"></div>
-        <div class="env-flap-back"></div>
-      </div>
+      <div class="env-flap"><div class="env-ff"></div><div class="env-fb"></div></div>
 
-      <!-- WAX SEAL SVG -->
-      <svg class="wax-seal" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="35" cy="35" r="33" fill="#BC5E38"/>
-        <!-- subtle texture ring -->
-        <circle cx="35" cy="35" r="28" fill="none" stroke="rgba(248,241,229,0.22)" stroke-width="1"/>
-        <circle cx="35" cy="35" r="24" fill="none" stroke="rgba(248,241,229,0.12)" stroke-width="0.5"/>
-        <!-- decorative dots around edge -->
-        <circle cx="35" cy="4" r="1.5" fill="rgba(248,241,229,0.3)"/>
-        <circle cx="35" cy="66" r="1.5" fill="rgba(248,241,229,0.3)"/>
-        <circle cx="4" cy="35" r="1.5" fill="rgba(248,241,229,0.3)"/>
-        <circle cx="66" cy="35" r="1.5" fill="rgba(248,241,229,0.3)"/>
-        <circle cx="11" cy="11" r="1.2" fill="rgba(248,241,229,0.2)"/>
-        <circle cx="59" cy="11" r="1.2" fill="rgba(248,241,229,0.2)"/>
-        <circle cx="11" cy="59" r="1.2" fill="rgba(248,241,229,0.2)"/>
-        <circle cx="59" cy="59" r="1.2" fill="rgba(248,241,229,0.2)"/>
-        <!-- monogram -->
-        <text x="50%" y="42%" dominant-baseline="middle" text-anchor="middle"
-              font-family="Playfair Display, serif" font-size="11" font-style="italic"
-              fill="#F8F1E5" letter-spacing="2">A &amp; T</text>
-        <text x="50%" y="62%" dominant-baseline="middle" text-anchor="middle"
-              font-family="Raleway, sans-serif" font-size="5" font-weight="400"
-              fill="rgba(248,241,229,0.55)" letter-spacing="3">22·05·2026</text>
+      <!-- Wax seal dourado com flores -->
+      <svg class="wax" viewBox="0 0 68 68" fill="none">
+        <circle cx="34" cy="34" r="32" fill="#C8A060"/>
+        <circle cx="34" cy="34" r="27" fill="none" stroke="rgba(253,250,245,.28)" stroke-width="1"/>
+        <circle cx="34" cy="34" r="21" fill="none" stroke="rgba(253,250,245,.14)" stroke-width=".5"/>
+        <circle cx="34" cy="4" r="1.5" fill="rgba(253,250,245,.35)"/>
+        <circle cx="34" cy="64" r="1.5" fill="rgba(253,250,245,.35)"/>
+        <circle cx="4" cy="34" r="1.5" fill="rgba(253,250,245,.35)"/>
+        <circle cx="64" cy="34" r="1.5" fill="rgba(253,250,245,.35)"/>
+        <circle cx="10" cy="10" r="1.2" fill="rgba(253,250,245,.22)"/>
+        <circle cx="58" cy="10" r="1.2" fill="rgba(253,250,245,.22)"/>
+        <circle cx="10" cy="58" r="1.2" fill="rgba(253,250,245,.22)"/>
+        <circle cx="58" cy="58" r="1.2" fill="rgba(253,250,245,.22)"/>
+        <!-- tiny rose petals -->
+        <path d="M 34 23 C 31.5 25.5, 31 29, 34 31 C 37 29, 36.5 25.5, 34 23 Z" fill="rgba(253,250,245,.28)"/>
+        <path d="M 34 23 C 31.5 25.5, 31 29, 34 31 C 37 29, 36.5 25.5, 34 23 Z" fill="rgba(253,250,245,.22)" transform="rotate(72,34,34)"/>
+        <path d="M 34 23 C 31.5 25.5, 31 29, 34 31 C 37 29, 36.5 25.5, 34 23 Z" fill="rgba(253,250,245,.28)" transform="rotate(144,34,34)"/>
+        <path d="M 34 23 C 31.5 25.5, 31 29, 34 31 C 37 29, 36.5 25.5, 34 23 Z" fill="rgba(253,250,245,.22)" transform="rotate(216,34,34)"/>
+        <path d="M 34 23 C 31.5 25.5, 31 29, 34 31 C 37 29, 36.5 25.5, 34 23 Z" fill="rgba(253,250,245,.28)" transform="rotate(288,34,34)"/>
+        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="10" fill="rgba(253,250,245,.9)" letter-spacing="1.5">A &amp; T</text>
+        <text x="50%" y="64%" dominant-baseline="middle" text-anchor="middle" font-family="Raleway,sans-serif" font-size="4.2" fill="rgba(253,250,245,.5)" letter-spacing="1.8">22·05·2026</text>
       </svg>
-
     </div>
   </div>
 
   <p class="scene-hint">Toque para abrir</p>
-
 </div>
 
 
-<!-- ============================================================
-     CONVITE
-     ============================================================ -->
+<!-- ===================== CONVITE ===================== -->
 <div id="invitation">
 
   <!-- HERO -->
   <section class="hero">
 
-    <!-- botanical corner decorations -->
-    <svg class="bot bot-tl" width="220" height="220" viewBox="0 0 220 220" fill="none">
-      <path d="M10 210 C30 170 15 120 25 80 C55 55 90 35 110 15" stroke="#728B62" stroke-width="1.5" fill="none"/>
-      <ellipse cx="95" cy="42" rx="22" ry="10" transform="rotate(-38 95 42)" fill="#728B62" opacity="0.55"/>
-      <ellipse cx="68" cy="62" rx="18" ry="8" transform="rotate(-18 68 62)" fill="#728B62" opacity="0.45"/>
-      <ellipse cx="50" cy="88" rx="15" ry="7" transform="rotate(-5 50 88)" fill="#728B62" opacity="0.4"/>
-      <ellipse cx="38" cy="115" rx="12" ry="5" transform="rotate(10 38 115)" fill="#728B62" opacity="0.35"/>
-      <path d="M25 80 C10 95 8 120 12 145" stroke="#728B62" stroke-width="1" fill="none" opacity="0.4"/>
-      <ellipse cx="18" cy="130" rx="10" ry="4.5" transform="rotate(25 18 130)" fill="#728B62" opacity="0.3"/>
-      <!-- small flower bud -->
-      <circle cx="110" cy="15" r="4" fill="#BC5E38" opacity="0.5"/>
-      <circle cx="108" cy="13" r="2" fill="#BC5E38" opacity="0.35"/>
-    </svg>
-    <svg class="bot bot-tr" width="220" height="220" viewBox="0 0 220 220" fill="none">
-      <path d="M10 210 C30 170 15 120 25 80 C55 55 90 35 110 15" stroke="#728B62" stroke-width="1.5" fill="none"/>
-      <ellipse cx="95" cy="42" rx="22" ry="10" transform="rotate(-38 95 42)" fill="#728B62" opacity="0.55"/>
-      <ellipse cx="68" cy="62" rx="18" ry="8" transform="rotate(-18 68 62)" fill="#728B62" opacity="0.45"/>
-      <ellipse cx="50" cy="88" rx="15" ry="7" transform="rotate(-5 50 88)" fill="#728B62" opacity="0.4"/>
-      <path d="M25 80 C10 95 8 120 12 145" stroke="#728B62" stroke-width="1" fill="none" opacity="0.4"/>
-      <ellipse cx="18" cy="130" rx="10" ry="4.5" transform="rotate(25 18 130)" fill="#728B62" opacity="0.3"/>
-      <circle cx="110" cy="15" r="4" fill="#BC5E38" opacity="0.5"/>
-    </svg>
-    <svg class="bot bot-bl" width="220" height="220" viewBox="0 0 220 220" fill="none">
-      <path d="M10 210 C30 170 15 120 25 80 C55 55 90 35 110 15" stroke="#728B62" stroke-width="1.5" fill="none"/>
-      <ellipse cx="95" cy="42" rx="22" ry="10" transform="rotate(-38 95 42)" fill="#728B62" opacity="0.55"/>
-      <ellipse cx="68" cy="62" rx="18" ry="8" transform="rotate(-18 68 62)" fill="#728B62" opacity="0.45"/>
-      <ellipse cx="50" cy="88" rx="15" ry="7" transform="rotate(-5 50 88)" fill="#728B62" opacity="0.4"/>
-      <path d="M25 80 C10 95 8 120 12 145" stroke="#728B62" stroke-width="1" fill="none" opacity="0.4"/>
-      <ellipse cx="18" cy="130" rx="10" ry="4.5" transform="rotate(25 18 130)" fill="#728B62" opacity="0.3"/>
-    </svg>
-    <svg class="bot bot-br" width="220" height="220" viewBox="0 0 220 220" fill="none">
-      <path d="M10 210 C30 170 15 120 25 80 C55 55 90 35 110 15" stroke="#728B62" stroke-width="1.5" fill="none"/>
-      <ellipse cx="95" cy="42" rx="22" ry="10" transform="rotate(-38 95 42)" fill="#728B62" opacity="0.55"/>
-      <ellipse cx="68" cy="62" rx="18" ry="8" transform="rotate(-18 68 62)" fill="#728B62" opacity="0.45"/>
-      <ellipse cx="50" cy="88" rx="15" ry="7" transform="rotate(-5 50 88)" fill="#728B62" opacity="0.4"/>
-      <path d="M25 80 C10 95 8 120 12 145" stroke="#728B62" stroke-width="1" fill="none" opacity="0.4"/>
-      <circle cx="110" cy="15" r="4" fill="#BC5E38" opacity="0.5"/>
+    <!-- Flores canto superior esquerdo -->
+    <svg class="fl-corner fl-tl" width="380" height="340" viewBox="0 0 380 340" fill="none">
+      <defs>
+        <filter id="f1" x="-6%" y="-6%" width="112%" height="112%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="3" seed="4" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+      </defs>
+      <g filter="url(#f1)">
+        <!-- ramos -->
+        <path d="M -5 330 Q 35 270 58 210 Q 88 148 138 98 Q 188 52 238 18 Q 278 -2 325 -5" stroke="#A09060" stroke-width="1.6" fill="none" opacity=".42"/>
+        <path d="M 58 210 Q 32 190 18 165 Q 8 144 13 122" stroke="#A09060" stroke-width="1" fill="none" opacity=".32"/>
+        <path d="M 138 98 Q 112 82 92 68 Q 76 54 78 32" stroke="#A09060" stroke-width="1" fill="none" opacity=".32"/>
+        <path d="M 238 18 Q 258 38 272 52" stroke="#A09060" stroke-width=".9" fill="none" opacity=".28"/>
+
+        <!-- folhas -->
+        <path d="M 88 154 Q 63 133,70 110 Q 92 117, 88 154 Z" fill="#8A9A5A" opacity=".58" transform="rotate(-15,88,154)"/>
+        <path d="M 108 128 Q 93 107,103 88 Q 120 98, 108 128 Z" fill="#8A9A5A" opacity=".53" transform="rotate(10,108,128)"/>
+        <path d="M 153 84 Q 133 63,146 48 Q 163 58, 153 84 Z" fill="#8A9A5A" opacity=".58" transform="rotate(-5,153,84)"/>
+        <path d="M 193 53 Q 176 36,186 20 Q 203 30, 193 53 Z" fill="#607040" opacity=".48" transform="rotate(12,193,53)"/>
+        <path d="M 28 263 Q 8 246,16 228 Q 34 236, 28 263 Z" fill="#8A9A5A" opacity=".48" transform="rotate(20,28,263)"/>
+        <path d="M 268 28 Q 283 13,296 20 Q 288 36, 268 28 Z" fill="#607040" opacity=".43" transform="rotate(-10,268,28)"/>
+        <path d="M 238 58 Q 226 48,232 38 Q 244 44, 238 58 Z" fill="#8A9A5A" opacity=".48" transform="rotate(5,238,58)"/>
+        <path d="M 73 73 Q 61 60,68 50 Q 80 56, 73 73 Z" fill="#607040" opacity=".43" transform="rotate(-8,73,73)"/>
+
+        <!-- Flor grande 1 — centro-direita -->
+        <g transform="translate(190,83)">
+          <path d="M 0 0 C -18 -7,-26 -44, 0 -60 C 26 -44, 18 -7, 0 0 Z" fill="#F8C0CE" opacity=".72"/>
+          <path d="M 0 0 C -18 -7,-26 -44, 0 -60 C 26 -44, 18 -7, 0 0 Z" fill="#F0A8BC" opacity=".68" transform="rotate(72)"/>
+          <path d="M 0 0 C -18 -7,-26 -44, 0 -60 C 26 -44, 18 -7, 0 0 Z" fill="#F8C0CE" opacity=".70" transform="rotate(144)"/>
+          <path d="M 0 0 C -18 -7,-26 -44, 0 -60 C 26 -44, 18 -7, 0 0 Z" fill="#ECA0B8" opacity=".72" transform="rotate(216)"/>
+          <path d="M 0 0 C -18 -7,-26 -44, 0 -60 C 26 -44, 18 -7, 0 0 Z" fill="#F8C0CE" opacity=".68" transform="rotate(288)"/>
+          <path d="M 0 0 C -12 -5,-17 -30, 0 -40 C 17 -30, 12 -5, 0 0 Z" fill="#E898AE" opacity=".48" transform="rotate(36)"/>
+          <path d="M 0 0 C -12 -5,-17 -30, 0 -40 C 17 -30, 12 -5, 0 0 Z" fill="#E898AE" opacity=".45" transform="rotate(108)"/>
+          <path d="M 0 0 C -12 -5,-17 -30, 0 -40 C 17 -30, 12 -5, 0 0 Z" fill="#E898AE" opacity=".48" transform="rotate(180)"/>
+          <path d="M 0 0 C -12 -5,-17 -30, 0 -40 C 17 -30, 12 -5, 0 0 Z" fill="#DC8098" opacity=".43" transform="rotate(252)"/>
+          <path d="M 0 0 C -12 -5,-17 -30, 0 -40 C 17 -30, 12 -5, 0 0 Z" fill="#E898AE" opacity=".48" transform="rotate(324)"/>
+          <line x1="0" y1="-8" x2="0" y2="-53" stroke="#D88098" stroke-width=".6" opacity=".18"/>
+          <line x1="0" y1="-8" x2="0" y2="-53" stroke="#D88098" stroke-width=".6" opacity=".18" transform="rotate(72)"/>
+          <line x1="0" y1="-8" x2="0" y2="-53" stroke="#D88098" stroke-width=".6" opacity=".18" transform="rotate(144)"/>
+          <line x1="0" y1="-8" x2="0" y2="-53" stroke="#D88098" stroke-width=".6" opacity=".18" transform="rotate(216)"/>
+          <line x1="0" y1="-8" x2="0" y2="-53" stroke="#D88098" stroke-width=".6" opacity=".18" transform="rotate(288)"/>
+          <circle r="10" fill="#C04878" opacity=".72"/>
+          <circle r="5.5" fill="#8A2845" opacity=".83"/>
+          <line x1="1" y1="-5" x2="4" y2="-11" stroke="#C08840" stroke-width="1" opacity=".68"/>
+          <line x1="-1" y1="-5" x2="-4" y2="-11" stroke="#C08840" stroke-width="1" opacity=".68"/>
+          <circle cx="4" cy="-11" r="1.3" fill="#D0A040" opacity=".78"/>
+          <circle cx="-4" cy="-11" r="1.3" fill="#D0A040" opacity=".78"/>
+        </g>
+
+        <!-- Flor grande 2 — esquerda -->
+        <g transform="translate(73,143)">
+          <path d="M 0 0 C -16 -6,-22 -38, 0 -52 C 22 -38, 16 -6, 0 0 Z" fill="#FAC8D5" opacity=".70"/>
+          <path d="M 0 0 C -16 -6,-22 -38, 0 -52 C 22 -38, 16 -6, 0 0 Z" fill="#F0A8BC" opacity=".67" transform="rotate(72)"/>
+          <path d="M 0 0 C -16 -6,-22 -38, 0 -52 C 22 -38, 16 -6, 0 0 Z" fill="#FAC8D5" opacity=".65" transform="rotate(144)"/>
+          <path d="M 0 0 C -16 -6,-22 -38, 0 -52 C 22 -38, 16 -6, 0 0 Z" fill="#ECA0B8" opacity=".70" transform="rotate(216)"/>
+          <path d="M 0 0 C -16 -6,-22 -38, 0 -52 C 22 -38, 16 -6, 0 0 Z" fill="#F8C0CE" opacity=".65" transform="rotate(288)"/>
+          <path d="M 0 0 C -10 -4,-14 -26, 0 -35 C 14 -26, 10 -4, 0 0 Z" fill="#DC8098" opacity=".44" transform="rotate(36)"/>
+          <path d="M 0 0 C -10 -4,-14 -26, 0 -35 C 14 -26, 10 -4, 0 0 Z" fill="#DC8098" opacity=".41" transform="rotate(108)"/>
+          <path d="M 0 0 C -10 -4,-14 -26, 0 -35 C 14 -26, 10 -4, 0 0 Z" fill="#DC8098" opacity=".44" transform="rotate(180)"/>
+          <path d="M 0 0 C -10 -4,-14 -26, 0 -35 C 14 -26, 10 -4, 0 0 Z" fill="#D07890" opacity=".40" transform="rotate(252)"/>
+          <path d="M 0 0 C -10 -4,-14 -26, 0 -35 C 14 -26, 10 -4, 0 0 Z" fill="#DC8098" opacity=".44" transform="rotate(324)"/>
+          <circle r="9" fill="#B84870" opacity=".70"/>
+          <circle r="5" fill="#882845" opacity=".80"/>
+          <line x1="1" y1="-4" x2="3" y2="-9" stroke="#C08840" stroke-width="1" opacity=".62"/>
+          <line x1="-1" y1="-4" x2="-3" y2="-9" stroke="#C08840" stroke-width="1" opacity=".62"/>
+          <circle cx="3" cy="-9" r="1.2" fill="#D0A040" opacity=".73"/>
+          <circle cx="-3" cy="-9" r="1.2" fill="#D0A040" opacity=".73"/>
+        </g>
+
+        <!-- Botão 1 (semiaberto) -->
+        <g transform="translate(118,43) rotate(-25)">
+          <path d="M 0 0 C -8 -5,-10 -22, 0 -30 C 10 -22, 8 -5, 0 0 Z" fill="#FAC8D5" opacity=".68"/>
+          <path d="M 0 0 C -8 -5,-10 -22, 0 -30 C 10 -22, 8 -5, 0 0 Z" fill="#F0A8BC" opacity=".62" transform="rotate(90)"/>
+          <path d="M 0 0 C -8 -5,-10 -22, 0 -30 C 10 -22, 8 -5, 0 0 Z" fill="#FAC8D5" opacity=".68" transform="rotate(180)"/>
+          <path d="M 0 0 C -8 -5,-10 -22, 0 -30 C 10 -22, 8 -5, 0 0 Z" fill="#F0A8BC" opacity=".62" transform="rotate(270)"/>
+          <circle r="5" fill="#C04878" opacity=".58"/>
+        </g>
+
+        <!-- Botão 2 (fechado) -->
+        <g transform="translate(263,40) rotate(15)">
+          <path d="M 0 5 Q -7 -5, 0 -22 Q 7 -5, 0 5 Z" fill="#FAC8D5" opacity=".68"/>
+          <path d="M -4 5 Q -10 -3,-2 -20 Q 2 -8,-4 5 Z" fill="#F0A8BC" opacity=".58"/>
+          <path d="M 4 5 Q 10 -3, 2 -20 Q -2 -8, 4 5 Z" fill="#F0A8BC" opacity=".58"/>
+        </g>
+
+        <!-- Botão 3 (pequeno) -->
+        <g transform="translate(303,8) rotate(-10)">
+          <path d="M 0 5 Q -5 -3, 0 -16 Q 5 -3, 0 5 Z" fill="#F8C0CE" opacity=".58"/>
+          <path d="M -3 5 Q -7 -2,-1 -14 Q 1 -6,-3 5 Z" fill="#ECA0B8" opacity=".52"/>
+        </g>
+      </g>
     </svg>
 
-    <p class="hero-eyebrow">Casamento Civil</p>
-
-    <h1 class="hero-names">
-      Ana Luiza
-      <span class="amp">&amp;</span>
-      Thiago Feitosa
-    </h1>
-
-    <p class="hero-date">22 &middot; 05 &middot; 2026 &nbsp;&nbsp;&middot;&nbsp;&nbsp; Sexta-feira</p>
-
-    <!-- botanical divider -->
-    <svg class="hero-divider" viewBox="0 0 220 32" fill="none">
-      <line x1="0" y1="16" x2="80" y2="16" stroke="#C4A055" stroke-width="0.8" opacity="0.5"/>
-      <ellipse cx="96" cy="16" rx="6" ry="3" fill="#728B62" opacity="0.45"/>
-      <circle cx="110" cy="16" r="4.5" fill="#BC5E38" opacity="0.55"/>
-      <ellipse cx="124" cy="16" rx="6" ry="3" fill="#728B62" opacity="0.45"/>
-      <line x1="140" y1="16" x2="220" y2="16" stroke="#C4A055" stroke-width="0.8" opacity="0.5"/>
-      <!-- small leaves on divider -->
-      <ellipse cx="88" cy="12" rx="5" ry="2.5" transform="rotate(-30 88 12)" fill="#728B62" opacity="0.3"/>
-      <ellipse cx="132" cy="20" rx="5" ry="2.5" transform="rotate(30 132 20)" fill="#728B62" opacity="0.3"/>
+    <!-- Flores canto inferior direito (espelho) -->
+    <svg class="fl-corner fl-br" width="380" height="340" viewBox="0 0 380 340" fill="none">
+      <defs>
+        <filter id="f2" x="-6%" y="-6%" width="112%" height="112%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="3" seed="7" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+      </defs>
+      <g filter="url(#f2)">
+        <path d="M -5 330 Q 35 270 58 210 Q 88 148 138 98 Q 188 52 238 18 Q 278 -2 325 -5" stroke="#A09060" stroke-width="1.6" fill="none" opacity=".40"/>
+        <path d="M 58 210 Q 32 190 18 165 Q 8 144 13 122" stroke="#A09060" stroke-width="1" fill="none" opacity=".30"/>
+        <path d="M 138 98 Q 112 82 92 68 Q 76 54 78 32" stroke="#A09060" stroke-width="1" fill="none" opacity=".30"/>
+        <path d="M 88 154 Q 63 133,70 110 Q 92 117, 88 154 Z" fill="#8A9A5A" opacity=".55" transform="rotate(-15,88,154)"/>
+        <path d="M 108 128 Q 93 107,103 88 Q 120 98, 108 128 Z" fill="#8A9A5A" opacity=".50" transform="rotate(10,108,128)"/>
+        <path d="M 153 84 Q 133 63,146 48 Q 163 58, 153 84 Z" fill="#8A9A5A" opacity=".55" transform="rotate(-5,153,84)"/>
+        <path d="M 193 53 Q 176 36,186 20 Q 203 30, 193 53 Z" fill="#607040" opacity=".46" transform="rotate(12,193,53)"/>
+        <path d="M 28 263 Q 8 246,16 228 Q 34 236, 28 263 Z" fill="#8A9A5A" opacity=".46" transform="rotate(20,28,263)"/>
+        <g transform="translate(190,83)">
+          <path d="M 0 0 C -18 -7,-26 -44, 0 -60 C 26 -44, 18 -7, 0 0 Z" fill="#F8C0CE" opacity=".70"/>
+          <path d="M 0 0 C -18 -7,-26 -44, 0 -60 C 26 -44, 18 -7, 0 0 Z" fill="#F0A8BC" opacity=".66" transform="rotate(72)"/>
+          <path d="M 0 0 C -18 -7,-26 -44, 0 -60 C 26 -44, 18 -7, 0 0 Z" fill="#F8C0CE" opacity=".68" transform="rotate(144)"/>
+          <path d="M 0 0 C -18 -7,-26 -44, 0 -60 C 26 -44, 18 -7, 0 0 Z" fill="#ECA0B8" opacity=".70" transform="rotate(216)"/>
+          <path d="M 0 0 C -18 -7,-26 -44, 0 -60 C 26 -44, 18 -7, 0 0 Z" fill="#F8C0CE" opacity=".66" transform="rotate(288)"/>
+          <path d="M 0 0 C -12 -5,-17 -30, 0 -40 C 17 -30, 12 -5, 0 0 Z" fill="#E898AE" opacity=".46" transform="rotate(36)"/>
+          <path d="M 0 0 C -12 -5,-17 -30, 0 -40 C 17 -30, 12 -5, 0 0 Z" fill="#E898AE" opacity=".43" transform="rotate(108)"/>
+          <path d="M 0 0 C -12 -5,-17 -30, 0 -40 C 17 -30, 12 -5, 0 0 Z" fill="#E898AE" opacity=".46" transform="rotate(180)"/>
+          <path d="M 0 0 C -12 -5,-17 -30, 0 -40 C 17 -30, 12 -5, 0 0 Z" fill="#DC8098" opacity=".41" transform="rotate(252)"/>
+          <path d="M 0 0 C -12 -5,-17 -30, 0 -40 C 17 -30, 12 -5, 0 0 Z" fill="#E898AE" opacity=".46" transform="rotate(324)"/>
+          <circle r="10" fill="#C04878" opacity=".70"/>
+          <circle r="5.5" fill="#8A2845" opacity=".80"/>
+          <line x1="1" y1="-5" x2="4" y2="-11" stroke="#C08840" stroke-width="1" opacity=".65"/>
+          <line x1="-1" y1="-5" x2="-4" y2="-11" stroke="#C08840" stroke-width="1" opacity=".65"/>
+          <circle cx="4" cy="-11" r="1.3" fill="#D0A040" opacity=".75"/>
+          <circle cx="-4" cy="-11" r="1.3" fill="#D0A040" opacity=".75"/>
+        </g>
+        <g transform="translate(73,143)">
+          <path d="M 0 0 C -16 -6,-22 -38, 0 -52 C 22 -38, 16 -6, 0 0 Z" fill="#FAC8D5" opacity=".67"/>
+          <path d="M 0 0 C -16 -6,-22 -38, 0 -52 C 22 -38, 16 -6, 0 0 Z" fill="#F0A8BC" opacity=".64" transform="rotate(72)"/>
+          <path d="M 0 0 C -16 -6,-22 -38, 0 -52 C 22 -38, 16 -6, 0 0 Z" fill="#FAC8D5" opacity=".62" transform="rotate(144)"/>
+          <path d="M 0 0 C -16 -6,-22 -38, 0 -52 C 22 -38, 16 -6, 0 0 Z" fill="#ECA0B8" opacity=".67" transform="rotate(216)"/>
+          <path d="M 0 0 C -16 -6,-22 -38, 0 -52 C 22 -38, 16 -6, 0 0 Z" fill="#F8C0CE" opacity=".62" transform="rotate(288)"/>
+          <path d="M 0 0 C -10 -4,-14 -26, 0 -35 C 14 -26, 10 -4, 0 0 Z" fill="#DC8098" opacity=".42" transform="rotate(36)"/>
+          <path d="M 0 0 C -10 -4,-14 -26, 0 -35 C 14 -26, 10 -4, 0 0 Z" fill="#DC8098" opacity=".39" transform="rotate(180)"/>
+          <circle r="9" fill="#B84870" opacity=".67"/>
+          <circle r="5" fill="#882845" opacity=".77"/>
+          <line x1="1" y1="-4" x2="3" y2="-9" stroke="#C08840" stroke-width="1" opacity=".60"/>
+          <line x1="-1" y1="-4" x2="-3" y2="-9" stroke="#C08840" stroke-width="1" opacity=".60"/>
+          <circle cx="3" cy="-9" r="1.2" fill="#D0A040" opacity=".70"/>
+          <circle cx="-3" cy="-9" r="1.2" fill="#D0A040" opacity=".70"/>
+        </g>
+        <g transform="translate(118,43) rotate(-25)">
+          <path d="M 0 0 C -8 -5,-10 -22, 0 -30 C 10 -22, 8 -5, 0 0 Z" fill="#FAC8D5" opacity=".65"/>
+          <path d="M 0 0 C -8 -5,-10 -22, 0 -30 C 10 -22, 8 -5, 0 0 Z" fill="#F0A8BC" opacity=".60" transform="rotate(90)"/>
+          <path d="M 0 0 C -8 -5,-10 -22, 0 -30 C 10 -22, 8 -5, 0 0 Z" fill="#FAC8D5" opacity=".65" transform="rotate(180)"/>
+          <path d="M 0 0 C -8 -5,-10 -22, 0 -30 C 10 -22, 8 -5, 0 0 Z" fill="#F0A8BC" opacity=".60" transform="rotate(270)"/>
+          <circle r="5" fill="#C04878" opacity=".56"/>
+        </g>
+      </g>
     </svg>
 
-    <p class="hero-copy">
-      Com alegria em nossos corações,<br>
-      convidamos você a celebrar<br>
-      nossa união.
+    <!-- conteúdo -->
+    <div class="verse">
+      <p class="verse-text">
+        "Para que todos vejam, e saibam, e considerem,<br>
+        e juntamente entendam que a mão do Senhor<br>
+        fez isto, e o Santo de Israel o criou."
+      </p>
+      <p class="verse-ref">Isaías 41:20</p>
+    </div>
+
+    <div class="names">
+      <div class="name-line big">Ana Luiza</div>
+      <div class="name-line and">e Thiago</div>
+    </div>
+
+    <p class="subtitle">Convidam para a cerimônia de seu Casamento Civil</p>
+
+    <div class="date-block">
+      <div class="date-rule"><span></span><span></span></div>
+      <p class="date-main">Dia 22.05.26 &nbsp;às 14h</p>
+      <div class="date-rule"><span></span><span></span></div>
+    </div>
+
+    <p class="description">
+      O casamento acontecerá no Cartório Botelho às 14h e em seguida,<br>
+      receberemos apenas os nossos familiares mais próximos<br>
+      para juntos fazermos um momento de oração em nossa casa, às 15h.
     </p>
 
   </section>
 
   <!-- COUNTDOWN -->
-  <section class="countdown-section">
-    <p class="section-eyebrow">Faltam para o grande dia</p>
+  <section class="cd-section">
+    <p class="sec-lbl">Faltam para o grande dia</p>
     <div class="countdown">
-      <div class="cd-block">
-        <span class="cd-num" id="cd-d">07</span>
-        <span class="cd-label">Dias</span>
-      </div>
-      <div class="cd-block">
-        <span class="cd-num" id="cd-h">00</span>
-        <span class="cd-label">Horas</span>
-      </div>
-      <div class="cd-block">
-        <span class="cd-num" id="cd-m">00</span>
-        <span class="cd-label">Minutos</span>
-      </div>
-      <div class="cd-block">
-        <span class="cd-num" id="cd-s">00</span>
-        <span class="cd-label">Segundos</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- SCHEDULE -->
-  <section class="schedule-section">
-    <h2 class="section-title">Programação</h2>
-    <div class="timeline">
-
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <p class="tl-time">13h30</p>
-        <p class="tl-name">Recepção dos Convidados</p>
-        <p class="tl-desc">Chegada e acomodação no Cartório Botelho</p>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <p class="tl-time">14h00</p>
-        <p class="tl-name">Cerimônia Civil</p>
-        <p class="tl-desc">Oficialização da nossa união perante a lei</p>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <p class="tl-time">Após a cerimônia</p>
-        <p class="tl-name">Celebração</p>
-        <p class="tl-desc">Brinde e confraternização com os presentes</p>
-      </div>
-
+      <div class="cd-blk"><span class="cd-num" id="cd-d">07</span><span class="cd-unit">Dias</span></div>
+      <div class="cd-blk"><span class="cd-num" id="cd-h">00</span><span class="cd-unit">Horas</span></div>
+      <div class="cd-blk"><span class="cd-num" id="cd-m">00</span><span class="cd-unit">Minutos</span></div>
+      <div class="cd-blk"><span class="cd-num" id="cd-s">00</span><span class="cd-unit">Segundos</span></div>
     </div>
   </section>
 
   <!-- LOCATION -->
-  <section class="location-section">
-    <h2 class="section-title">Local</h2>
+  <section class="loc-section">
+    <h2 class="sec-title">Local</h2>
     <div class="addr-card">
-      <svg class="addr-icon" width="26" height="26" viewBox="0 0 24 24" fill="none">
-        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#BC5E38"/>
-      </svg>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="margin-bottom:.9rem;opacity:.38"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#9A7B35"/></svg>
       <p class="addr-name">Cartório Botelho</p>
-      <p class="addr-street">
-        Av. Des. Moreira, 1000<br>
-        Aldeota, Fortaleza – CE<br>
-        CEP 60170-000
-      </p>
-      <a class="btn-map"
-         href="https://maps.google.com/?q=Av.+Desembargador+Moreira,+1000,+Aldeota,+Fortaleza,+CE,+60170-000"
-         target="_blank" rel="noopener">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-        </svg>
+      <p class="addr-street">Av. Des. Moreira, 1000<br>Aldeota, Fortaleza – CE<br>CEP 60170-000</p>
+      <a class="btn-map" href="https://maps.google.com/?q=Av.+Desembargador+Moreira,+1000,+Aldeota,+Fortaleza,+CE,+60170-000" target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
         Ver no Mapa
       </a>
     </div>
   </section>
 
   <!-- ACTIONS -->
-  <section class="actions-section">
-    <h2 class="section-title">Confirme sua Presença</h2>
-    <p class="actions-copy">Sua presença é o nosso maior presente.</p>
-    <div class="actions-grid">
-      <a class="btn-action btn-solid"
-         href="#"
-         onclick="alert('Em breve o link para confirmação estará disponível! ♡'); return false;">
-        ♡ &nbsp; Confirmar Presença
-      </a>
-      <a class="btn-action btn-outline"
-         href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Casamento+Ana+Luiza+%26+Thiago+Feitosa&dates=20260522T170000Z%2F20260522T210000Z&details=Cerim%C3%B4nia+Civil+%E2%80%94+Cart%C3%B3rio+Botelho&location=Av.+Des.+Moreira%2C+1000%2C+Aldeota%2C+Fortaleza%2C+CE"
-         target="_blank" rel="noopener">
-        &#9711; &nbsp; Salvar na Agenda
-      </a>
+  <section class="act-section">
+    <h2 class="sec-title">Confirme sua Presença</h2>
+    <p class="act-copy">Sua presença é o nosso maior presente.</p>
+    <div class="btns">
+      <a class="btn btn-solid" href="#" onclick="alert('Link de confirmação em breve! ♡'); return false;">♡ &nbsp; Confirmar Presença</a>
+      <a class="btn btn-outline" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Casamento+Ana+Luiza+%26+Thiago&dates=20260522T170000Z%2F20260522T220000Z&details=Cart%C3%B3rio+Botelho+%C3%A0s+14h%0AMomento+de+ora%C3%A7%C3%A3o+em+casa+%C3%A0s+15h&location=Av.+Des.+Moreira%2C+1000%2C+Aldeota%2C+Fortaleza%2C+CE" target="_blank" rel="noopener">&#9711; &nbsp; Salvar na Agenda</a>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <svg viewBox="0 0 220 32" fill="none" style="width:160px; margin: 0 auto 1.8rem; display:block;">
-      <line x1="0" y1="16" x2="80" y2="16" stroke="#C4A055" stroke-width="0.8" opacity="0.35"/>
-      <ellipse cx="96" cy="16" rx="6" ry="3" fill="#728B62" opacity="0.3"/>
-      <circle cx="110" cy="16" r="4.5" fill="#BC5E38" opacity="0.35"/>
-      <ellipse cx="124" cy="16" rx="6" ry="3" fill="#728B62" opacity="0.3"/>
-      <line x1="140" y1="16" x2="220" y2="16" stroke="#C4A055" stroke-width="0.8" opacity="0.35"/>
+    <svg viewBox="0 0 220 30" fill="none" style="width:155px;margin:0 auto 1.6rem;display:block">
+      <line x1="0" y1="15" x2="80" y2="15" stroke="#C4A060" stroke-width=".8" opacity=".38"/>
+      <ellipse cx="96" cy="15" rx="5" ry="2.5" fill="#8A9A5A" opacity=".32"/>
+      <circle cx="110" cy="15" r="4" fill="#F0A8BC" opacity=".48"/>
+      <ellipse cx="124" cy="15" rx="5" ry="2.5" fill="#8A9A5A" opacity=".32"/>
+      <line x1="140" y1="15" x2="220" y2="15" stroke="#C4A060" stroke-width=".8" opacity=".38"/>
     </svg>
-    <p class="footer-names">Ana Luiza &amp; Thiago</p>
-    <p class="footer-date">22 de Maio de 2026 &nbsp;·&nbsp; Fortaleza, Ceará</p>
+    <p class="ft-names">Ana Luiza &amp; Thiago</p>
+    <p class="ft-date">22 de Maio de 2026 &nbsp;·&nbsp; Fortaleza, Ceará</p>
   </footer>
 
-</div>
+</div><!-- #invitation -->
 
-
-<!-- ============================================================
-     SCRIPTS
-     ============================================================ -->
 <script>
-// --- ENVELOPE OPEN ---
-function openEnvelope() {
-  var env = document.getElementById('envelope');
-  if (env.classList.contains('opening')) return;
-  env.classList.add('opening');
-
-  setTimeout(function() {
+function openEnvelope(){
+  var e=document.getElementById('envelope');
+  if(e.classList.contains('opening'))return;
+  e.classList.add('opening');
+  setTimeout(function(){
     document.getElementById('scene').classList.add('gone');
-    var inv = document.getElementById('invitation');
-    inv.classList.add('visible');
-    document.body.classList.add('unlocked');
-    window.scrollTo(0, 0);
-  }, 2000);
+    document.getElementById('invitation').classList.add('visible');
+    document.body.classList.add('open');
+    window.scrollTo(0,0);
+  },2050);
 }
-
-// --- COUNTDOWN ---
-function pad(n) { return String(n).padStart(2, '0'); }
-var prevSecs = -1;
-
-function tick() {
-  // 22 May 2026 14:00 BRT = UTC-3 → 17:00 UTC
-  var target = new Date('2026-05-22T17:00:00Z');
-  var diff = target - Date.now();
-
-  if (diff < 0) {
-    document.getElementById('cd-d').textContent = '00';
-    document.getElementById('cd-h').textContent = '00';
-    document.getElementById('cd-m').textContent = '00';
-    document.getElementById('cd-s').textContent = '00';
-    return;
-  }
-
-  var d = Math.floor(diff / 86400000);
-  var h = Math.floor((diff % 86400000) / 3600000);
-  var m = Math.floor((diff % 3600000) / 60000);
-  var s = Math.floor((diff % 60000) / 1000);
-
-  document.getElementById('cd-d').textContent = pad(d);
-  document.getElementById('cd-h').textContent = pad(h);
-  document.getElementById('cd-m').textContent = pad(m);
-
-  var secEl = document.getElementById('cd-s');
-  if (s !== prevSecs) {
-    secEl.classList.remove('tick');
-    void secEl.offsetWidth;
-    secEl.classList.add('tick');
-    prevSecs = s;
-  }
-  secEl.textContent = pad(s);
+function pad(n){return String(n).padStart(2,'0')}
+var pv=-1;
+function tick(){
+  var t=new Date('2026-05-22T17:00:00Z'),d=t-Date.now();
+  if(d<0){['d','h','m','s'].forEach(function(x){document.getElementById('cd-'+x).textContent='00'});return}
+  document.getElementById('cd-d').textContent=pad(Math.floor(d/86400000));
+  document.getElementById('cd-h').textContent=pad(Math.floor((d%86400000)/3600000));
+  document.getElementById('cd-m').textContent=pad(Math.floor((d%3600000)/60000));
+  var s=Math.floor((d%60000)/1000),el=document.getElementById('cd-s');
+  if(s!==pv){el.classList.remove('tick');void el.offsetWidth;el.classList.add('tick');pv=s}
+  el.textContent=pad(s);
 }
-
-setInterval(tick, 1000);
-tick();
+setInterval(tick,1000);tick();
 </script>
 </body>
 </html>
